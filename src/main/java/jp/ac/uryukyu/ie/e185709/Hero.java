@@ -9,7 +9,7 @@ package jp.ac.uryukyu.ie.e185709;
  *  boolean dead; //敵の生死状態。true=死亡。
  * Created by tnal on 2016/11/13.
  */
-class Hero extends LivingThing {
+public class Hero extends LivingThing {
 
     /**
      * コンストラクタ。名前、最大HP、攻撃力を指定する。
@@ -17,12 +17,17 @@ class Hero extends LivingThing {
      * @param maximumHP ヒーローのHP
      * @param attack ヒーローの攻撃力
      */
-    Hero (String name, int maximumHP, int attack) {
+    public Hero (String name, int maximumHP, int attack) {
         super(name,maximumHP,attack);
     }
 
+    /**
+     * 自身へ攻撃されたときのダメージ処理をするメソッド。
+     * 指定されたダメージを hitPoint から引き、死亡判定を行う。
+     * @param damage 受けたダメージ
+     */
     @Override
-    void wounded(int damage){
+    public void wounded(int damage){
         hitpointSetter(damage);
         if( hitpointGetter() < 0 ) {
             deadSetter(true);
